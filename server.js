@@ -16,6 +16,12 @@ if (process.env.NODE_ENV === "production") {
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
 
+//TODO move db stuff out
+//define the database
+const db = require("./models")
+console.log(db.Article)
+//End DB
+
 // Define API routes here
 
 // Send every other request to the React app
