@@ -24,20 +24,25 @@ const db = require("./models")
 // Define API routes here
 
 //POST Route
-app.post("/api/saved", (req, res) => {
+//app.post("/api/saved", (req, res) => {
   //get posted object
-  var article = req.body;
+  //var article = req.body;
+
+//});
 
   //call db.article.create & return json
-  db.create.Article(article)
-  .then(() => {
-  res.json(article)
+  db.Article.create({
+    title: "insert title",
+    url: "insert url"
+  })
+  .then((success) => {
+    console.log(success)
   })
   .catch((err) => {
-  res.json(err)
+  console.log(err)
   })
 
-});
+
 
 //GET Route
 app.get("/api/saved", (req, res) => {
