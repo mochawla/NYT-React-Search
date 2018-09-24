@@ -19,10 +19,30 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
 //TODO move db stuff out
 //define the database
 const db = require("./models")
-console.log(db.Article)
-//End DB
+
 
 // Define API routes here
+
+//POST Route
+app.post("/api/saved", (req, res) => {
+  //get posted object
+  var article = req.body;
+
+  //call db.article.create & return json
+  db.create.Article(article)
+  .then(() => {
+  res.json(article)
+  })
+  .catch((err) => {
+  res.json(err)
+  })
+
+});
+
+//GET Route
+app.get("/api/saved", (req, res) => {
+  db.Article.find({}).then(articles => res.json(articles))
+})
 
 // Send every other request to the React app
 // Define any API routes before this runs
