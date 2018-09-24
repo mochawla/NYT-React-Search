@@ -6,8 +6,21 @@ import Row from "../../components/Row/row";
 import Column from "../../components/Column/column";
 import Search from "../../components/Search/search";
 import Results from "../../components/Results/results";
+import ResultItem from "../../components/ResultItem/resultitem";
 
 class Home extends Component {
+
+    state = {
+        articles: [],
+        title: "",
+        date: "",
+        url: "",
+        begin: "",
+        end: "",
+        results: []
+
+    }
+
     render() {
         return (
            <Container fluid> 
@@ -21,7 +34,17 @@ class Home extends Component {
 
             <Row>
                 <Column size="md-12">
-                    <Results/>
+                    <Results>
+                        {this.state.articles.map(article =>{
+                            return (
+                                <ResultItem
+                                    title={article.title}
+                                    date={article.date}
+                                    url={article.url}
+                                />
+                            );
+                        })}
+                    </Results>    
                 </Column>    
             </Row>
 

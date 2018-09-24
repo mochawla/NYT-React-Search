@@ -11,7 +11,9 @@ const Results = (props) => (
         </div>
 
         <div className="card-body" id="article-section">
-        {props.children}
+            <ul className="list-group">
+                {props.children}
+            </ul>
         </div>
 
     </div>
